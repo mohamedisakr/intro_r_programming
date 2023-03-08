@@ -20,6 +20,9 @@ sum(vic)
 
 prod(vic)
 
+min(vic)
+max(vic)
+
 
 #------------------ 2. Vector attributes ----------------
 
