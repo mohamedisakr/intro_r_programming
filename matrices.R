@@ -37,3 +37,23 @@ medals <- rbind(medals, sweden)
 medals
 
 
+#------------ creating a matrix in a single line of code -------------
+
+medals2 <- matrix(c(16, 8, 13, 37, 12, 10, 5, 27, 9, 4, 2, 15, 8, 10, 7, 25, 8, 5, 5, 18),
+                  nrow = 5, byrow = TRUE, 
+                  dimnames = list(c("norway","germany","china","usa","sweden"),
+                                  c("gold", "silver", "bronze", "total")))
+medals2
+
+
+
+
+
+
+
+
+
+
+
+
+
