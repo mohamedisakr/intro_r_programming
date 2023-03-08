@@ -32,22 +32,25 @@ long_vec - short_vec
 long_vec / short_vec
 long_vec * short_vec
 
-#------------------ 3. Vector attributes ----------------
+#------------------ 3. Vector attributes  ----------------
+# names, dimensions, classes
 
 age <- c(23, 26, 24, 26)
-
 attributes(age)
-
+names(age)
 
 
 names(age) <- c("Mohamed", "Omar", "Khaled", "Amr")
-
 age
-
 attributes(age)
 
-names(age) <- NULL
 
+names(age) <- c("Mohamed Mohamed", "Omar Omar", "Khaled Khaled", "Amr Amr")
+age
+attributes(age)
+
+
+names(age) <- NULL
 names(age)
 
 
