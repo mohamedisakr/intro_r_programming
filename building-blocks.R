@@ -33,7 +33,7 @@ a*2
 
 print(a*2)
 
-#------------------------- data types (Integers and doubles) -------------------
+#------------------------- data types (integers and doubles) -------------------
 # 6 types of vectors (integer, double, character, logical, complex, raw)
 
 is.vector(bob)
@@ -52,19 +52,36 @@ typeof(b)
 
 ls()
 
+
+#------------------- data types (characters and logicals)
+
+1500*3.75
+
+
 courseName <- "R for data analysis"
 
 ls()
 
 typeof(courseName)
 
+
+course_toc <- "The course is consists of 12 sections"
+
+typeof(course_toc)
+
+
 heights <-  c(11.5200, 12.4800, 12.3778, 12.7300, 12.4440, 13.6024)
 
+print(heights)
 
 print(typeof(heights))
 
 
-print(heights)
+
+at_least_heights <- heights>12
+
+(typeof(at_least_heights))
+
 
 
 # x <- c(2, 3, 5, 7, 11)
