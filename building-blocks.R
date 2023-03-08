@@ -33,15 +33,26 @@ a*2
 
 print(a*2)
 
+#------------------------- data types (Integers and doubles) -------------------
+# 6 types of vectors (integer, double, character, logical, complex, raw)
+
+is.vector(bob)
+
 is.vector(a)
 
 print(is.vector(a))
 
 typeof(a)
 
+b = c(5, 6, 7)
+
+b = c(5L, 6L, 7L)
+
+typeof(b)
+
 ls()
 
-courseName <- "R for data science"
+courseName <- "R for data analysis"
 
 ls()
 
