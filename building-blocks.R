@@ -146,6 +146,7 @@ args(round)
 
 
 # -------------  building a function
+
 deck <- c("Duke", "Assassin", "Captain", "Ambassador", "Contessa")
 
 print(deck)
@@ -155,7 +156,7 @@ hand <- sample(deck, 3, replace = TRUE)
 print(hand)
 
 
-draw <- function(){
+draw <- function() {
   deck <- c("Duke", "Assassin", "Captain", "Ambassador", "Contessa")
   hand <- sample(deck, 3, replace = TRUE)
   print(hand)
