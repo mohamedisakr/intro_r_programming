@@ -138,6 +138,9 @@ print(round(mean(a)))
 
 first_100_mean <- mean(10:100)
 
+#--------------------- functions and arguments ------------------------
+
+round(2.4271, 2)
 
 args(round)
 
