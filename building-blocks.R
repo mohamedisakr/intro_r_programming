@@ -118,21 +118,26 @@ ls()
 #check if my_data exists
 #exists('course_name')
 
+#----------------- functions -------------------
+
+round(2, 4271)
 
 mean(a)
 
 print(mean(a))
 
-
 round(mean(a))
-
-
-print(round(mean(a)))
-
 
 mean_a <- mean(a)
 
 print(mean_a)
+
+print(round(mean(a)))
+
+
+
+first_100_mean <- mean(10:100)
+
 
 args(round)
 
