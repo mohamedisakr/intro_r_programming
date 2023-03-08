@@ -1,1 +1,1 @@
-# Introduction to Probability and Data with R
+# Introduction to R Programming
