@@ -23,8 +23,16 @@ prod(vic)
 min(vic)
 max(vic)
 
+#------------------ 2. Vector recycling ----------------
+long_vec <- 1:10
+short_vec <- 1:5
 
-#------------------ 2. Vector attributes ----------------
+long_vec + short_vec
+long_vec - short_vec
+long_vec / short_vec
+long_vec * short_vec
+
+#------------------ 3. Vector attributes ----------------
 
 age <- c(23, 26, 24, 26)
 
