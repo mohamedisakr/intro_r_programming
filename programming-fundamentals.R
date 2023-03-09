@@ -159,6 +159,31 @@ repeat {
 } 
 
 
+# ------------- building function  ------------------------
+
+# draw <- function() {
+#   deck <- c("Duke", "Assassin", "Captain", "Ambassador", "Contessa")
+#   hand <- sample(deck, 3, replace = TRUE)
+#   print(hand)
+# }
+
+coup = matrix(rep(c("Duke", "Assassin", "Captain", "Ambassador", "Contessa") , 3), ncol = 1)
+
+deal = function(deck) {
+  cards = deck[1:3, ]
+  print(cards)
+}
+
+deal(deck = coup)
+
+shuffle = function(deck, n) {
+  random = sample(1:n, size = n)
+  res_deck = deck[random, , drop = FALSE]
+  print(res_deck)
+}
+
+shuffle(coup, 15)
+
 
 
 
