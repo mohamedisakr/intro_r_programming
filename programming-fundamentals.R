@@ -67,20 +67,34 @@ v < 7
 
 
 
+#----------------------- if else statement -------------------
+
+lo <- 5
+if(lo < 0) {
+  print("Your number is negative")
+} else {
+  ("Your number is non-negative")
+}
 
 
+v <- 0
 
-
-
-
-
-
-
-
-
-
-
-#-----------------------  -------------------
+if(v < 0){
+  print("The object was less than @, but I am working on it!")
+  print("Wait for it...")
+  
+  v <- v * -1
+  
+  print("Your object is now positive. Check it out!")
+  print(v)
+} else if(v == 0){
+  print("Your object is exactly zero")
+} else if((v > 0) & (v < 12)){
+  print("The object is positive and less than 12")
+} else {
+  print("Your object is positive, and larger than 12")
+  print(v)
+}
 
 
 
