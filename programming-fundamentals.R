@@ -120,8 +120,18 @@ if (w < 7){
   print("w is more than 7")
 }  
   
-#---------------------  ------------------------
+#--------------------- for loop ------------------------
 
+
+numbers <- c(1, 2, 3, 4, 5) # c('One','Two',"Three","Four","Five")
+# length(numbers)
+
+num_holders <- vector(length = length(numbers))
+for(i in numbers) {
+  num_holders[i] <- numbers[i]
+}
+
+print(num_holders)
 
 
 
