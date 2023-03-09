@@ -58,6 +58,9 @@ hp_mat[6,2]
 
 hp_mat[6]
 
+
+# ------------ slicing a matrix ---------------------
+
 hp_mat[6,]
 
 hp_mat[,2]
@@ -75,6 +78,54 @@ hp_mat
 hp_mat["Goblet", ]
 
 hp_mat[, "USA"]
+
+
+# ------------ matrix arithmetic ---------------------
+
+b_office <- c(171.5, 292, 281.6, 460.6, 139.3, 288)
+mat_mat <- matrix(b_office, nrow = 3, byrow = T,
+                  dimnames = list(c("The Matrix", "Reloaded", "Revolutions"), 
+                                  c("US", "Worldwide")))
+mat_mat
+
+
+
+mat_scaled <- mat_mat/1000
+mat_scaled
+
+
+avg_margin <- mat_mat - 121
+avg_margin
+
+
+budget <- matrix(c(63, 150, 150), nrow = 3, ncol = 2)
+budget
+
+margin <- mat_mat - budget
+margin
+
+
+mat_mat - c(63, 150, 150)
+
+v <- matrix(1:6, nrow = 3)
+v
+
+multiplied <- mat_mat * v
+multiplied
+
+id <- matrix(c(1, 0, 0, 0, 1, 0, 0, 0, 1), nrow = 3, ncol = 3)
+id
+
+A <- matrix(c(1, 3, 2, 4), nrow = 2, ncol = 2)
+A
+
+B <- matrix(c(2, 1, 0, 2), nrow = 2, ncol = 2)
+B
+
+mul_res = B * A
+mul_res
+
+
 
 
 
