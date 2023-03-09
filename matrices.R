@@ -156,3 +156,42 @@ mat_prelim
 
 
 
+# ------------ creating a factor ---------------------
+
+marital_status <- c("Married", "Married", "Single", "Married", "Divorced", "Widowed", "Divorced")
+
+str(marital_status)
+
+
+marital_factor <- factor(marital_status)
+marital_factor
+
+
+typeof(marital_factor)
+str(marital_factor)
+
+
+new_factor <- factor(marital_status, levels = c("Single", "Married", "Divorced", "Widowed"))
+new_factor
+
+typeof(new_factor)
+str(new_factor)
+
+
+ordered_factor <- factor(marital_status, ordered = TRUE,
+                         levels = c("Single", "Married", "Divorced", "Widowed"))
+ordered_factor
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
