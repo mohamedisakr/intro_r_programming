@@ -126,9 +126,33 @@ mul_res = B * A
 mul_res
 
 
+# ------------ matrix operations ---------------------
+
+ 
+# b_office <- c(171.5, 292, 281.6, 460.6, 139.3, 288)
+# mat_mat <- matrix(b_office, nrow = 3, byrow = T,
+#                   dimnames = list(c("The Matrix", "Reloaded", "Revolutions"), 
+#                                   c("US", "Worldwide")))
+# mat_mat
 
 
+col_totals <- colSums(mat_mat)
+col_totals
 
+
+row_totals <- rowSums(mat_mat)
+row_totals
+
+
+col_means <- colMeans(mat_mat)
+col_means
+
+
+row_mean <- rowMeans(mat_mat)
+row_mean
+
+mat_prelim <- rbind(mat_mat, col_totals, col_means)
+mat_prelim
 
 
 
