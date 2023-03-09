@@ -62,7 +62,19 @@ hp_mat[6,]
 
 hp_mat[,2]
 
+hp_subset <- hp_mat[c(1, 3, 7), ]
+hp_subset
 
+
+colnames(hp_mat) <- c("USA", "Worldwide") 
+rownames(hp_mat) <- c("Hallows Part 2", "Sorcerer's Stone", "Hallows Part 1", 
+                      "Order", "Prince", "Goblet", "Chamber", "Prisoner") 
+hp_mat
+
+
+hp_mat["Goblet", ]
+
+hp_mat[, "USA"]
 
 
 
