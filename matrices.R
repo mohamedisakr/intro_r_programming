@@ -48,7 +48,19 @@ medals2
 
 
 
+# ------------ indexing an element from a matrix ---------------------
 
+gross <- c(381, 1340, 318, 975, 396, 960, 292, 940, 302, 934, 290, 897, 262, 879, 249, 797) 
+hp_mat <- matrix(gross, nrow = 8, byrow = T) 
+hp_mat 
+
+hp_mat[6,2]
+
+hp_mat[6]
+
+hp_mat[6,]
+
+hp_mat[,2]
 
 
 
