@@ -98,10 +98,28 @@ if(v < 0){
 
 
 
-#-----------------  -------------------
+#----------------- more if else statement  -------------------
+
+z <- c(1, 0, -3, 5)
+w <- 6
+
+if(z < 3) {
+  print("less than 3")
+}
 
 
+z < 3
 
+w = 8
+
+if (w < 7){
+  print("w is less than 7")
+} else if(w == 6){
+  print("w is precisely 6")
+} else {
+  print("w is more than 7")
+}  
+  
 #---------------------  ------------------------
 
 
