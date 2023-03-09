@@ -144,3 +144,23 @@ while(i < 6) {
 }
 
 
+# ------------- repeat loop  ------------------------
+
+
+i = -10
+repeat {
+  print(paste("value", i))
+  i <- i + 1
+  if(i >= 0) {
+    print("i is 0 or more")
+    print("loop exit")
+    break
+  }
+} 
+
+
+
+
+
+
+
