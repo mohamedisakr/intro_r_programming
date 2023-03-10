@@ -185,7 +185,37 @@ shuffle = function(deck, n) {
 shuffle(coup, 15)
 
 
+# ------------- function scope  ------------------------
 
 
+multi12 = function(x) {
+  y = x * 12
+  return(y)
+}
+
+multi12(3)
+
+y = multi12(3)
+print(y)
+
+
+coup = matrix(rep(c("Duke", "Assassin", "Captain", "Ambassador", "Contessa") , 3), ncol = 1)
+
+
+shuffle = function(deck) {
+  random = sample(1:23, size = 23)
+  res_deck = deck[random, , drop = FALSE]
+  return (res_deck)
+}
+
+
+deal = function(deck = matrix(1:23, nrow = 23)) {
+  shuffled_cards <- shuffle(deck)
+  cards <- shuffled_cards[1:3, ]
+  return (cards)
+}
+
+# deal(deck = coup)
+deal()
 
 
