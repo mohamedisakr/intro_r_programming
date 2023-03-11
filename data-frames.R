@@ -24,7 +24,15 @@ str(my_df)
 install.packages("tidyverse")
 
 
-#-------------------  --------------------------------
+#------------------- import data --------------------------------
+
+# working directory
+getwd()
+
+my_pok <- read.table("pokRdex-comma.csv", sep=',', header = TRUE, stringsAsFactors = FALSE)
+my_pok
+
+
 
 
 
