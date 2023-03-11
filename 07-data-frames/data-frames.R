@@ -151,3 +151,34 @@ my_df
 
 data()
 
+# ---------------- ealing with missing data ---------------------
+
+na_df <- c(NA, 1:10)
+na_df
+
+mean(na_df)
+
+
+mean(na_df, na.rm = TRUE)
+
+is.na(na_df)
+
+any(is.na(na_df))
+
+any(is.na(my_starwars[, c("name", "height", "mass")]))
+
+head(my_starwars)
+
+colnames(my_starwars)
+
+head(my_starwars$name)
+
+my_starwars["name"]
+
+
+any(is.na(my_starwars$height))
+
+my_starwars$height[is.na(my_starwars$height)] <- median(my_starwars$height, na.rm = T)
+my_starwars
+
+my_starwars["height"]
