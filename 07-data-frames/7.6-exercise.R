@@ -62,5 +62,22 @@ class(diamonds)
 # 3. Load the built-in UsJudgeRatings data set and check its class. 
 # If it's not a data frame, convert it to one.
 
+require(graphics)
+pairs(USJudgeRatings, main = "USJudgeRatings data")
+
+str(USJudgeRatings)
+
+summary(USJudgeRatings)
+
 # Create a new variable called AVRG and calculate the average rating for each judge. 
 # Save this variable in a separate data frame.
+
+str(USJudgeRatings)
+
+my.df <- USJudgeRatings
+?rowMeans
+my.df$AVRG <- rowMeans(my.df)
+str(my.df)
+
+avrg <- my.df["AVRG"]
+str(avrg)
