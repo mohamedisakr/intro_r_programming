@@ -50,9 +50,24 @@ write.csv(my_df, "my_first_file.csv", row.names = FALSE)
 
 
 
-#---------------------  ------------------------
+#--------------------- basic exploratory data analysis ------------------------
+
+# nrow()
+# ncol()
+# rownames()
+# colnames()
+# str()
+# summary()
+
+nrow(my_pok)
+ncol(my_pok)
 
 
+colnames(my_pok)
+
+str(my_pok)
+
+summary(my_pok)
 
 
 # -------------  ------------------------
