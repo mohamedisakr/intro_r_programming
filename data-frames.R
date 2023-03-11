@@ -58,6 +58,8 @@ write.csv(my_df, "my_first_file.csv", row.names = FALSE)
 # colnames()
 # str()
 # summary()
+# head()
+# tail()
 
 nrow(my_pok)
 ncol(my_pok)
@@ -70,6 +72,39 @@ str(my_pok)
 summary(my_pok)
 
 
-# -------------  ------------------------
+# ------------- indexing and slicing a data frame ------------------------
 
 
+library(tidyverse)
+starwars
+
+str(starwars)
+
+my_starwars <- as.data.frame(starwars)
+my_starwars
+
+
+my_starwars <- my_starwars[, -(11:13)]
+my_starwars
+
+head(my_starwars)
+
+tail(my_starwars)
+
+my_starwars[3, "homeworld"]
+
+my_starwars[3, ]
+
+
+my_starwars[, 1]
+str(my_starwars[, 1])
+
+str(my_starwars[["name"]])
+
+head(my_starwars$name)
+str(head(my_starwars$name))
+
+my_starwars["name"]
+str(my_starwars["name"])
+
+my_starwars[c(1:10), c("name", "height", "mass")]
