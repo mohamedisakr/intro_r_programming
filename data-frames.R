@@ -108,3 +108,46 @@ my_starwars["name"]
 str(my_starwars["name"])
 
 my_starwars[c(1:10), c("name", "height", "mass")]
+
+#-------------- extending data frame -------------------
+
+my_df
+
+mark <- c(37.5, 34.75, 34.25, 0, 0, 0.75, 0)
+carrie <- c(13.5, 22.75, 21.25, 0, 0, 0.5, 5.75)
+
+
+my_df$MarkScreenTime <- mark
+my_df$CarrieScreenTime <- carrie
+
+my_df
+
+
+my_df$MarkScreenTime <- NULL
+my_df$CarrieScreenTime <- NULL
+
+my_df
+
+
+my_df[["MarkScreenTime"]] <- mark
+my_df[["CarrieScreenTime"]] <- carrie
+
+my_df
+
+
+my_df$MarkScreenTime <- NULL
+my_df$CarrieScreenTime <- NULL
+
+my_df
+
+
+my_df <- cbind(my_df, MarkScreenTime = mark, CarrieScreenTime = carrie)
+my_df
+
+rogueOne <- c("Rogue One", 2016, 133, 1051, 0, 0.25)
+my_df <- rbind(my_df, rogueOne)
+my_df
+
+
+data()
+
