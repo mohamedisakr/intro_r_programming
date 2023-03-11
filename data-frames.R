@@ -35,9 +35,10 @@ my_pok
 
 
 
+#----------------------- import csv file -------------------
 
-
-#-----------------------  -------------------
+my_pok <- read.csv("pokRdex-comma.csv", stringsAsFactors = FALSE)
+my_pok
 
 
 
