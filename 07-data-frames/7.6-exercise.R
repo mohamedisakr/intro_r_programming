@@ -50,6 +50,15 @@ class(breed_df$Name)
 # 2. Load the diamonds data set from the ggplot2 package. Check its class and if it 
 # isn't a data frame, convert it to one.
 
+library(ggplot2)
+??diamonds
+data(diamonds)
+View(diamonds)
+
+str(diamonds)
+
+class(diamonds)
+
 # 3. Load the built-in UsJudgeRatings data set and check its class. 
 # If it's not a data frame, convert it to one.
 
