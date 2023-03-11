@@ -42,7 +42,11 @@ my_pok
 
 
 
-#-----------------  -------------------
+#----------------- export file -------------------
+
+my_df
+
+write.csv(my_df, "my_first_file.csv", row.names = FALSE)
 
 
 
