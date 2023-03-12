@@ -109,19 +109,30 @@ tb_separated $age <- str_replace_all(tb_separated$age, "65", "65-100")
 
 tb_separated
 
-#---------------------  ------------------------
+#--------------------- tidying data with unite & spread ------------------------
+
+
+tb_separated <- tb_separated %>% separate(age, into = c("age_low", "age_high"))
+tb_separated
+
+
+tb_united <- tb_separated %>% unite("age_range", c("age_low", "age_high"), sep = "-")
+tb_united
+
+
+# str(weather_data)
+
+
+weather_data <- read.csv("weather.csv")
+weather_data <- as.tibble(weather_data)
+str(weather_data)
+
+weather_data
 
 
 
-
-# -------------  ------------------------
-
-
+weather_spread <- spread(weather_data, key = element, value = value) 
+weather_spread
 
 
-#--------------  -------------------
-
-
-
-# ----------------  ---------------------
 
