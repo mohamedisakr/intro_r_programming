@@ -62,17 +62,52 @@ star_filtered <- star %>%
 
 star_filtered
 
-#-----------------------  -------------------
+
+#----------------------- tidying data with gather & separate -------------------
+
+# gather
+# spread
+# unite
+# separate
+
+billboard <- read.csv("billboard.csv")
+billboard <- as.tibble(billboard)
+str(billboard)
+
+billboard_arranged <- billboard %>% 
+  gather(x1st.week:x76th.week, key = "week", value = "rank", na.rm = T) %>%
+  arrange(artist.inverted)
+
+str(billboard_arranged)
 
 
 
+tb <- read.csv("tb.csv")
+tb <- as.tibble(tb)
+str(tb)
 
 
+tb_gathered <- tb %>% 
+  gather(m.014:f.65, key = "column", value = "cases", na.rm = T) %>%
+  arrange(country)
+  
+str(tb_gathered)
+tb_gathered
 
-#-----------------  -------------------
+
+tb_separated <- tb_gathered %>% separate(column, into = c("sex", "age")) # , sep = "."
+tb_separated
 
 
+tb_separated$age <- str_replace_all(tb_separated$age, "0", "0-") 
+tb_separated$age <- str_replace_all(tb_separated$age, "15", "15-") 
+tb_separated$age <- str_replace_all(tb_separated$age, "25", "25-") 
+tb_separated$age <- str_replace_all(tb_separated$age, "35", "35-") 
+tb_separated$age <- str_replace_all(tb_separated$age, "45", "45-") 
+tb_separated$age <- str_replace_all(tb_separated$age, "55", "55-") 
+tb_separated $age <- str_replace_all(tb_separated$age, "65", "65-100")
 
+tb_separated
 
 #---------------------  ------------------------
 
