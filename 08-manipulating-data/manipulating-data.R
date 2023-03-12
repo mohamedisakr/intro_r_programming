@@ -45,11 +45,22 @@ sample_n(star, 10)
 
 sample_frac(star, 0.1)
 
-#-------------------  --------------------------------
+
+#------------------- using the pipe operator --------------------------------
+
+star_species <- group_by(star, species) 
+star_summary <- summarise(star_species, count = n(), avg_mass = mean(mass, na.rm = T))
+filter(star_summary, count > 1)
 
 
+filter(summarise(group_by(star, species), count = n(), avg_mass = mean(mass, na.rm = T)), count > 1)
 
+star_filtered <- star %>% 
+  group_by(species) %>% 
+  summarise(count = n(), avg_mass = mean(mass, na.rm = T)) %>% 
+  filter(count > 1)
 
+star_filtered
 
 #-----------------------  -------------------
 
