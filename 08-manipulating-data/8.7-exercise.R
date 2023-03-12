@@ -2,6 +2,9 @@
 # Please find a lot less tidy version in the resources for this lesson and go through the 
 # necessary steps to clean it.
 
+weather_data = read.csv("weather-untidy.csv", stringsAsFactors = FALSE)
+str(weather_data)
+
 # Note: read the documentation on the parse_number() function from the readr package, and 
 # try to use it when cleaning the data.
 

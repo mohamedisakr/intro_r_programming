@@ -37,10 +37,13 @@ summarize(star, avg_height = mean(height, na.rm = T))
 star_species <- group_by(star, species)
 summarize(star_species, avg_height = mean(height, na.rm = T))
 
-#-------------------------  -------------------
+
+#------------------------- sampling data with dplyr -------------------
 
 
+sample_n(star, 10)
 
+sample_frac(star, 0.1)
 
 #-------------------  --------------------------------
 
