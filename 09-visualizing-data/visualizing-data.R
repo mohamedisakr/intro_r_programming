@@ -33,7 +33,7 @@ library(tidyverse)
 
 
 df <- read.csv("titanic.csv", stringsAsFactors = FALSE)
-df <- as.tibble(df)
+df <- as_tibble(df)
 
 df
 
@@ -82,6 +82,34 @@ survived_by_gender <- df %>%
   summarise(count = n(), relative_freq = ((count/nrow(df))*100))
 
 survived_by_gender
+
+
+
+#----------------- building box and whiskers plot ----------------
+
+box_plot <- ggplot(df, aes(x = Survived, y = Age))
+box_plot + geom_boxplot() + 
+  labs(y = "Age", x = "Survived", title = "Survival Rate") + theme_light()
+
+
+box_plot <- ggplot(df, aes(x = Survived, y = Age))
+box_plot + geom_boxplot() + geom_jitter(width = 0.2, aes(color = Sex)) +
+  labs(y = "Age", x = "Survived", title = "Survival Rate") + theme_light()
+
+
+box_plot <- ggplot(df, aes(x = Survived, y = Age))
+box_plot + geom_boxplot(outlier.color = "Red", outlier.shape = 4) + 
+  geom_jitter(width = 0.2, aes(color = Sex)) +
+  labs(y = "Age", x = "Survived", title = "Survival Rate") + theme_light()
+
+
+box_plot <- ggplot(df, aes(x = Survived, y = Age))
+box_plot + geom_boxplot(outlier.color = "Red", outlier.shape = 4) + 
+  geom_jitter(width = 0.2, aes(color = Sex)) + coord_flip()
+  labs(y = "Age", x = "Survived", title = "Survival Rate") + theme_light()
+
+
+
 
 
 
