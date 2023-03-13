@@ -109,10 +109,39 @@ box_plot + geom_boxplot(outlier.color = "Red", outlier.shape = 4) +
   labs(y = "Age", x = "Survived", title = "Survival Rate") + theme_light()
 
 
+  
+#----------------- building scatter plot ----------------
+
+scatter_plot <- ggplot(hdi, aes(CPI.2015, HDI.2015))
+scatter_plot + geom_point(aes(color = Region)) + theme_light() +
+  labs(x = "Corruption Perception Index", y = "Human Development Index", 
+       title = "Corruption & Human Development 2015")
 
 
+scatter_plot <- ggplot(hdi, aes(CPI.2015, HDI.2015))
+scatter_plot + 
+  geom_point(aes(color = Region), shape = 21, fill = "white", size = 3, stroke = 2) + 
+  theme_light() +  labs(x = "Corruption Perception Index", y = "Human Development Index", 
+       title = "Corruption & Human Development 2015")
 
 
+scatter_plot <- ggplot(hdi, aes(CPI.2015, HDI.2015))
+scatter_plot + 
+  geom_point(aes(color = Region), shape = 21, fill = "white", size = 3, stroke = 2) + 
+  theme_light() +  labs(x = "Corruption Perception Index", y = "Human Development Index", 
+                        title = "Corruption & Human Development 2015") + 
+  stat_smooth(se = FALSE)
 
 
-
+scatter_plot <- ggplot(hdi, aes(CPI.2015, HDI.2015))
+scatter_plot + 
+  geom_point(aes(color = Region), shape = 21, fill = "white", size = 3, stroke = 2) + 
+  theme_light() +  labs(x = "Corruption Perception Index", y = "Human Development Index", 
+                        title = "Corruption & Human Development 2015") + 
+  stat_density_2d()
+  
+  
+  
+  
+  
+  
