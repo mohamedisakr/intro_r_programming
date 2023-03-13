@@ -151,7 +151,7 @@ my_df
 
 data()
 
-# ---------------- ealing with missing data ---------------------
+# ---------------- dealing with missing data ---------------------
 
 na_df <- c(NA, 1:10)
 na_df
