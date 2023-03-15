@@ -33,7 +33,24 @@ summer_games
 bar <- ggplot(summer_games, aes(x = Continent))
 bar + geom_bar(fill = "steelblue") + theme_light()  # + geom_text(aes(label = count)) 
 
+#---- sort bar plot 
+summer_games_by_continent <- summer_games %>% 
+  group_by(Continent) %>% 
+  summarise(freq = n()) %>%
+  mutate(Continent = fct_reorder(Continent, -freq)) #%>%
 
+summer_games_by_continent
+
+col <-  ggplot(summer_games_by_continent) 
+col + geom_col(aes(Continent, freq))
+
+
+  # ------------- does not work
+# bar <- ggplot(summer_games, aes(x = reorder(Continent)))
+# bar + geom_bar(fill = "steelblue") + theme_light()  # + geom_text(aes(label = count)) 
+
+# ggplot(summer_games, aes(x = Continent)) +
+#   geom_bar() +  ggtitle("Number of olympic games by continent")
 
 # ggplot(data = summer_games, aes(x = factor(Continent))) + 
 #   theme_light() +
