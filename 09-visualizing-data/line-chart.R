@@ -1,6 +1,15 @@
 library(tidyverse)
 
-animals <- read.csv("animals.csv", stringsAsFactors = FALSE)
+# define paths to data sets
+directory_path <- file.path(dirname(dirname(getwd())))
+directory_path
+
+file_path <- file.path(directory_path, "data", "animals.csv")
+file_path
+
+# import the data sets
+animals <- read.csv(file_path, stringsAsFactors = FALSE)
+
 animals <- as_tibble(animals)
 str(animals)
 animals
