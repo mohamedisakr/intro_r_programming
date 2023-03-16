@@ -3,7 +3,15 @@
 
 library(tidyverse)
 
-hdi <- read.csv("hdi-cpi.csv", stringsAsFactors = FALSE)
+# define paths to data sets
+directory_path <- file.path(dirname(dirname(getwd())))
+directory_path
+
+file_path <- file.path(directory_path, "data", "hdi-cpi.csv")
+file_path
+
+# import the data sets
+hdi <- read.csv(file_path, stringsAsFactors = FALSE)
 hdi <- as_tibble(hdi)
 
 head(hdi)

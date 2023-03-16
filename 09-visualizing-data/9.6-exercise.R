@@ -1,7 +1,15 @@
 library(tidyverse)
 library(ggthemes)
 
-emps <- read.csv("employee_data_na.csv", stringsAsFactors = FALSE)
+# define paths to data sets
+directory_path <- file.path(dirname(dirname(getwd())))
+directory_path
+
+file_path <- file.path(directory_path, "data", "employee_data_na.csv")
+file_path
+
+# import the data sets
+emps <- read.csv(file_path, stringsAsFactors = FALSE)
 emps <- as_tibble(emps)
 str(emps)
 
