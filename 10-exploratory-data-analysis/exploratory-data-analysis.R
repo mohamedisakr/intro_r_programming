@@ -22,7 +22,16 @@ coef_var
 # ---------------- covariance & correlation ---------------------
 # multivariate measures of dispersion
 
-land_states <- read.csv("landdata-states.csv", stringsAsFactors = FALSE)
+# define paths to data sets
+directory_path <- file.path(dirname(dirname(getwd())))
+directory_path
+
+file_path <- file.path(directory_path, "data", "landdata-states.csv")
+file_path
+
+# import the data sets
+
+land_states <- read.csv(file_path, stringsAsFactors = FALSE)
 land_states <- as_tibble(land_states)
 str(land_states)
 land_states
