@@ -4,7 +4,15 @@
 
 library(tidyverse)
 
-weather_data <- read.csv("weather-untidy.csv", stringsAsFactors = FALSE)
+# define paths to data sets
+directory_path <- file.path(dirname(dirname(getwd())))
+directory_path
+
+file_path <- file.path(directory_path, "data", "weather-untidy.csv")
+file_path
+
+# import the data sets
+weather_data <- read.csv(file_path, stringsAsFactors = FALSE)
 weather_data <- as.tibble(weather_data)
 str(weather_data)
 head(weather_data)

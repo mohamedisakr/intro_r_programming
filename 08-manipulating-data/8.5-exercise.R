@@ -1,9 +1,18 @@
 # Requirements: the employees data from Exercise 17.
 
+# define paths to data sets
+directory_path <- file.path(dirname(dirname(getwd())))
+directory_path
+
+file_path <- file.path(directory_path, "data", "employee_data_na.csv")
+file_path
+
+# import the data sets
+
 # Load the employees data and convert it into a tibble. 
 # Then, make the gender and title variables into a factor.
 # Hint: the commands are analogous to the as.data.frame() function.
-emps <- read.csv("employee_data_na.csv",  stringsAsFactors = FALSE) # , skip = 23
+emps <- read.csv(file_path,  stringsAsFactors = FALSE) # , skip = 23
 emps <- as_tibble(emps)
 str(emps)
 

@@ -70,7 +70,16 @@ star_filtered
 # unite
 # separate
 
-billboard <- read.csv("billboard.csv")
+# define paths to data sets
+directory_path <- file.path(dirname(dirname(getwd())))
+directory_path
+
+bill_file_path <- file.path(directory_path, "data", "billboard.csv")
+bill_file_path
+
+# import the data sets
+
+billboard <- read.csv(bill_file_path, stringsAsFactors = FALSE)
 billboard <- as.tibble(billboard)
 str(billboard)
 
@@ -81,8 +90,15 @@ billboard_arranged <- billboard %>%
 str(billboard_arranged)
 
 
+# define paths to data sets
+directory_path <- file.path(dirname(dirname(getwd())))
+directory_path
 
-tb <- read.csv("tb.csv")
+tb_file_path <- file.path(directory_path, "data", "tb.csv")
+tb_file_path
+
+# import the data sets
+tb <- read.csv(tb_file_path, stringsAsFactors = FALSE)
 tb <- as.tibble(tb)
 str(tb)
 
@@ -122,8 +138,15 @@ tb_united
 
 # str(weather_data)
 
+# define paths to data sets
+directory_path <- file.path(dirname(dirname(getwd())))
+directory_path
 
-weather_data <- read.csv("weather.csv")
+weather_file_path <- file.path(directory_path, "data", "weather.csv")
+weather_file_path
+
+# import the data sets
+weather_data <- read.csv(weather_file_path, stringsAsFactors = FALSE)
 weather_data <- as.tibble(weather_data)
 str(weather_data)
 

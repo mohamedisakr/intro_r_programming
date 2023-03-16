@@ -1,0 +1,163 @@
+﻿07 Asking Data Questions V1,"1. Identify business goal and questions.
+2. Narrow down the type of data needed to answer questions.
+3. Identify the KPIs that will be useful to show whether you are making progress on your business goal.
+4. Conduct the data analysis using the KPIs and use visualizations as part of the analysis.
+5. Provide recommendations and findings based on the completed data analysis.
+6. Create succinct and visual presentations for the stakeholders."
+08 Business Process Flow,"any business has 2 primary goals
+1. Reduce Costs
+2. Increase Revenue
+
+Reduce Costs
+some broad categories of costs
+- costs for setting up the website and engineering staff, 
+- salaries of staff
+- basic supplies for deliveries,
+- costs for the payment system,
+- legal contracts with the manufacturers and their delivery staff,
+- rent for the office.
+
+Increase Revenue
+To do this, we will need to get new customers as there are a lot of people who don't know about the product.
+We need to get their attention.
+
+Getting you customers is a multi-step process.
+
+We need to get ads ready and track their effectiveness to generate interest among viewers on several platforms so they ultimately buy the product.
+
+Each step of the journey is an opportunity to see how well we're doing with respect to our goal."
+09 Business Process Flow - Marketing,"Marketing is about how and where you get the word out about your product.
+
+Traditionally, this used to be about choosing to advertise in the newspaper, radio, or TV.
+But now, with the internet, the possibilities are endless.
+
+Companies can use social media like Instagram, Twitter, Facebook, Google Search, LinkedIn or even blogs to advertise their product.
+
+Online marketing gives you one advantage. With the use of cookies, a customer's journey can be tracked across time and across platforms.
+
+Knowing about the customers path can help companies figure out places for targeting these and similar customers."
+10 Business Process Flow - Growth,"To grow the business, we got executives, would be interested in growing the customer base.
+
+But, growing it can occur in 2 ways.
+
+1. The first is to get new customers to increase the customer base.
+
+2. The second way is to get current customers to increase the order size or make repeated orders.
+
+So, as business analyst, you need to break down the question of business growth to explore how we can quantify or measure the answer."
+11 Customer Journey,"To track the customer's journey in the online space, you begin with identifying specific ad platforms such as search engines, Instagram, Twitter, Facebook, and many others.
+
+This way, the app company can see how many users actually saw the ad.
+
+Next, in the marketing journey, a viewer who has seen the ad in any of these places will click on the ad.
+
+Great. Now, the viewer is on the WeCart website and a cookie gets placed on the viewers browser.
+
+Once that cookie is placed, the company is tracking what the potential customer is doing on the website.
+
+For example, whether the person is browsing or selecting items for purchase.
+
+Essentially, it tracks a potential customers progress along the customer journey whenever the customer interacts with the website. So, now the company's goal is to get this potential customer to do something on the website.
+
+In the case of WeCart, it could be something as simple as getting the customer to give their email address or download a brochure.
+
+When a customer's action is a result of a prompt it is called Call to Action.
+
+So, when the customer is prompted to submit the email, that is referred to as Call to Action or CTA. Next step.
+
+If the customer adds items to their cart, the cookie tracks this step in the customer journey to becoming a paid customer.
+
+So, now WeCart would want these customers who have added items to the cart to make that purchase, and finally, the viewer submits the payment details and goes through checkout.
+
+Now, you have a paid customer and they've completed the customer journey.
+
+In each stage, the marketer uses different digital tools to attract a potential customer and try to transform them into an actual customer.
+
+This customer journey can also be tracked along a marketing funnel. The funnel allows you to tie everything together on the customer journey and track with a good content along the journey."
+12 What are the 5 stages for customer journey,"1. Awareness 
+2. Interest 
+3. Desire
+4. Purchase
+5. post-purchase"
+13 Call To Action,"A marketing term that refers to an action a website visitor is supposed to take when given a specific prompt on a website. 
+These can be words or phrases, or icons that prompt and encourage the user to perform the action."
+14 Post-Purchase,"Actions customers take after purchasing an item that promote and increase sales and advocate on behalf of the company. 
+For e.g., coming back and purchasing more items, sharing or liking the company or product on social media, taking pictures 
+of the item and tagging it on Pinterest."
+15 Marketing Funnel,"Now that we understand the journey a potential customer goes through, we can use the metaphor of a funnel to track and analyze each step in the journey with data.
+
+Impressions and reach capture the person seeing the ad. Lead generation is visiting the website, and buying something is conversion to a paid customer.
+
+So, at the top, we're trying to build awareness and get our name in front of the potential customer.
+
+To do this, we use ad platforms and search engine optimization or SEO.
+
+With SEO, we can make sure our ad shows up for the right mix of search terms as people are searching for things online.
+
+For example, search terms like grocery delivery or grocery shopping would be a good search term when WeCart it ad shows up for the person.
+
+The metrics we can measure here are the number of people who saw the ad.
+
+Some of those people will click the ad and be taken to our website.
+
+To be counted at this level, the user should have clicked through the ad or the email sent to them.
+
+The metrics we use here are called click-through rate and cost per click.
+
+At this third level, the user has been counted because they have visited the company website.
+
+But just because someone landed on your web page, that does not mean the person is interested in spending money on buying a product from your website.
+
+More sites try to capture some other piece of information about you to determine if you're indeed interested.
+
+The most common is your email. With your email, they will then have the ability to send your marketing emails to try and convert you into a paying customer.
+
+If you provide your email or any other piece of information about yourself, you have indicated interest in the business,
+and the business will now think of you as a potential customer.
+
+They call this a lead (potential customer). 
+
+Other ways that businesses gauge your interests are if you download a document or create an account.
+
+Once visitors engage in any of these actions, the user is counted as a lead.
+
+At this level, marketing teams often want to know how much it costs a business to get the viewers to get to this level.
+
+The metric we calculate is the cost per lead.
+
+The final step is when the customer actually makes a purchase and becomes a paid customer.
+
+In other words, the lead converted to a paid customer.
+
+Our ultimate goal is to maximize these conversions at the bottom of the funnel.
+
+In the following pages, we will address each of these specific metrics that capture the progress at each of these levels.
+
+We will go over how to calculate them, and then you will practice.
+
+Now that you have an overview of this customer journey, calculating these metrics is not going to be hard.
+
+2 Additional Levels
+
+Before we move on, I wanted to share 2 more levels that companies use.
+
+1. Loyalty
+To grow their revenue and company profits, companies don’t just want their customers to buy once from them, but to come back to their website. Especially if the product is not a high-priced product. 
+That customer loyalty allows you to track how many revisits a customer is making after their first purchase, or how many of the customers have continued shopping after their first purchase.
+
+** Metrics: **  
+Some commonly used metrics include ** Repeat Purchase Rate** and ** Net Promoter Score**. We will not be going in depth with these, but please do check out the resources below to learn more about them.
+
+2. Advocacy
+Another level companies sometimes track is whether their customer is advocating for their company. That is, saying good things about the product and services. Leaning on social media provides a great opportunity to do just that. 
+
+** Metrics: ** 
+Some commonly used metrics include ** Customer Referrals** and Leads from Social Media. 
+For example, as the paid customer tweets about the company, likes the product on FB, provides a good rating on Amazon or the company website, analysts can use those metrics, such as ratings and likes to show how many of the customers serve as advocates.
+We will not be going in depth with these last two stage levels, but we have provided some resources below to help you understand these more."
+16 Search Engine Optimization (SEO),"The goal of search engine optimization is to influence the frequency of a website appearing in response to specific search terms in a search engine. 
+You can learn more about it on this Wikipedia page and this Forbes article."
+17 Lead,A potential customer interested in the products or services of a company
+18 Conversion,When the lead (potential customer) purchases the products or services being sold by a company
+19 Repurchase Rate,https://medium.com/@matsutton/repurchase-rate-the-most-overlooked-ecommerce-kpi-337bccde184b
+20 Net Promoter Score,https://en.wikipedia.org/wiki/Net_promoter_score
