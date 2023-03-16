@@ -17,3 +17,8 @@ ggplot(animals, aes(x = Year, y = Bears)) +
          plot.subtitle = element_text(size = 13, face = "bold", hjust = 0.5), 
          plot.caption = element_text(face = "italic", hjust = 0))
 
+#---------------- multiple lines on the Same Chart 
+ggplot(animals, aes(x = Year)) + 
+  geom_line(aes(y = Bears), color = "#75FF33", size = 2) + 
+  geom_line(aes(y = Dolphins), color = "#33DBFF", size = 2) + 
+  geom_line(aes(y = Whales), color="#BD33FF", size = 2) # linetype = "twodash" 
