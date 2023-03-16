@@ -12,6 +12,7 @@ ggplot(animals, aes(x = Year, y = Bears)) +
   labs( x = "Years", y = "Bears", title = "Bears increase", 
        subtitle = "Data from 2017 to 2022",
        caption = "Source: investopedia.com") +
+  geom_label(aes(label = Bears), nudge_x = 0.25, nudge_y = 0.25, check_overlap = TRUE) +
   theme(plot.title = element_text(color= "#000099f9", size = 20, face = "bold", hjust = 0.5), 
          plot.subtitle = element_text(size = 13, face = "bold", hjust = 0.5), 
          plot.caption = element_text(face = "italic", hjust = 0))
