@@ -9,7 +9,7 @@ file_path
 
 # import the data sets
 imdb <- read_tsv(file_path)
-imdb <- as.tibble(imdb)
+imdb <- as_tibble(imdb)
 str(imdb)
 head(imdb)
 
@@ -22,3 +22,7 @@ dist_freq_by_genre <- imdb %>%
   mutate(relativeFreq = freq / sum(freq))
 
 head(dist_freq_by_genre)
+
+problems(imdb)
+
+problems()
