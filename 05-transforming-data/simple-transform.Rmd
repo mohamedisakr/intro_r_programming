@@ -1,0 +1,52 @@
+---
+title: "simple data transform"
+output: html_document
+---
+
+
+```{r}
+library(tidyverse)
+library(here)
+library(skimr)
+library(janitor)
+```
+
+```{r}
+emp_id <- c(1:10)
+
+emp_name <- c("John Mendes", "Rob Stewart", "Rachel Abrahamson", "Christy Hickman", "Johnson Harper", "Candace Miller", "Carlson Landy", "Pansy Jordan", "Darius Berry", "Claudia Garcia")
+
+emp_job_title <- c("Professional", "Programmer", "Management", "Clerical", "Developer", "Programmer", "Management", "Clerical", "Developer", "Programmer")
+
+employee <- data.frame(emp_id, emp_name, emp_job_title) 
+employee
+str(employee)
+```
+
+
+```{r}
+# split emp name into 2 cols first and last
+employee_separate <- employee %>% separate(emp_name, into = c('first_name', 'last_name'), sep = ' ')
+employee_separate
+
+```
+
+```{r}
+# unite emp first and last name
+employee_unite <- employee_separate %>% unite('name', first_name, last_name, sep = ' ')
+employee_unite
+
+```
+
+
+```{r}
+# mutate to add new col
+install.packages("palmerpenguins")
+library(palmerpenguins)
+# data(package = 'palmerpenguins')
+str(penguins)
+penguins <- penguins %>% 
+  mutate(body_mass_kg = body_mass_g/1000, flipper_length_m = flipper_length_mm/1000)
+penguins
+```
+
