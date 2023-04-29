@@ -50,3 +50,8 @@ penguins <- penguins %>%
 penguins
 ```
 
+```{r}
+# use the arrange() function to sort the data for the column bill_length_mm in ascending order
+penguins <- penguins %>%  arrange(bill_length_mm)
+penguins
+```
