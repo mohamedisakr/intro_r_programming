@@ -1,5 +1,5 @@
 # Download the employees dataset from the resources for this lesson.
-getwd()
+# getwd()
 
 # Then, import it into R using your preferred import method.
 
@@ -7,7 +7,10 @@ getwd()
 # This is a large dataset, so limit the import to 200 observations. 
 # Note that the dataset has Copyright information in the beginning (23 rows). 
 # Any character variables should be stored as characters.
-emps <- read.csv("employee_data_na.csv",  stringsAsFactors = FALSE)
+
+library(here)
+
+emps <- read.csv(here("data", "employee_data_na.csv"))
 head(emps)
 
 str(emps)

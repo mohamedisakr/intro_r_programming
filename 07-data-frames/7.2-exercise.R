@@ -15,9 +15,11 @@
 # all your character variables will be recorded as factors. 
 # Edit the levels of the Breed variable to complete the task.
 
+library(here)
+
 # You can access a specific variable in a data frame like you would in a matrix.
 
-breed_df <- read.csv("breed-dataset.csv", stringsAsFactors = FALSE)
+breed_df <- read_csv(here("data", "breed-dataset.csv"))
 breed_df
 
 colnames(breed_df)

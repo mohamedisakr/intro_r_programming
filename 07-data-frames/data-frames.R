@@ -27,17 +27,17 @@ install.packages("tidyverse")
 #------------------- import data --------------------------------
 
 # working directory
-getwd()
+# getwd()
+
+library(here)
 
 my_pok <- read.table("pokRdex-comma.csv", sep=',', header = TRUE, stringsAsFactors = FALSE)
 my_pok
 
 
-
-
 #----------------------- import csv file -------------------
 
-my_pok <- read.csv("pokRdex-comma.csv", stringsAsFactors = FALSE)
+my_pok <- read.csv(here("data","pokRdex-comma.csv"))
 my_pok
 
 

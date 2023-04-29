@@ -11,7 +11,9 @@
 #Zizi           140 extra small      2   dog         No
 #Carrie         109       large     36   cat        Yes
 
-breed_df <- read.csv("breed-dataset-v2.csv",  stringsAsFactors = FALSE)
+library(here)
+
+breed_df <- read.csv(here("data","breed-dataset-v2.csv"))
 head(breed_df)
 breed_df
   

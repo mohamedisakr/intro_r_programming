@@ -1,21 +1,16 @@
 library(tidyverse)
-
-# define paths to data sets
-directory_path <- file.path(dirname(dirname(getwd())))
-directory_path
-
-file_path <- file.path(directory_path, "data", "stock-returns.csv")
-file_path
+library(here)
 
 # import the data sets
-stock_returns <- read.csv(file_path, stringsAsFactors = FALSE)
+stock_returns <- read.csv(here("data", "stock-returns.csv"))
 stock_returns <- as_tibble(stock_returns)
 stock_returns
+
 glimpse(stock_returns)
+
 str(stock_returns)
 
-
-colnames( stock_returns)
+colnames(stock_returns)
 
 
 # ------------------------------------

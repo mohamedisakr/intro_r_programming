@@ -1,6 +1,8 @@
 ## Using the employee_data_na.CSV file, please answer the following questions:
 
-emps <- read.csv("employee_data_na.csv",  stringsAsFactors = FALSE)
+library(here)
+
+emps <- read.csv(here("data","employee_data_na.csv"))
 
 ## 1. Are there NA values in the data at all?
 
