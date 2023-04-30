@@ -1,0 +1,62 @@
+---
+title: "course challenge"
+author: "Awesome Me"
+date: "2023-04-30"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## load libraries
+
+
+```{r }
+library(tidyverse)
+library(here)
+```
+
+## import flavors_of_cacao.csv file
+
+
+```{r}
+chocolate_df <- read_csv(here("data", "flavors_of_cacao.csv"))
+chocolate_df
+```
+
+## review the column names
+
+```{r}
+colnames(chocolate_df)
+```
+
+## use the select() function to create a new data frame with only these three variables. 
+### (Rating, CocoaPercent, BeanType)
+
+```{r}
+trimmed_flavors_df <- chocolate_df %>% select(Rating, CocoaPercent, BeanType)
+trimmed_flavors_df
+```
+
+## use the summarize() and sd() functions to find the standard deviation of the rating for your data. 
+### Add the code chunk that lets you find the standard deviation for the variable Rating.
+
+```{r}
+trimmed_flavors_df <- chocolate_df %>% summarise(sd(Rating))
+trimmed_flavors_df
+```
+
+## apply the filter() function to the variables CocoaPercent and Rating
+### filter the data frame for chocolate bars that contain at least 75% cocoa and have a rating of at least 3.9 points. 
+
+```{r}
+best_trimmed_flavors_df <- chocolate_df %>% filter(CocoaPercent >= 0.75, Rating >= 3.9)
+best_trimmed_flavors_df
+```
+
+## TODO: Question 8
+
+
+
+
