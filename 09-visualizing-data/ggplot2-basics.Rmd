@@ -78,6 +78,38 @@ ggplot(data = penguins) +
 ```
 
 
+```{r}
+ggplot(data = penguins) + 
+  geom_smooth(mapping = aes(x = flipper_length_mm, y = body_mass_g)) + 
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g)) + 
+  labs(title ="penguins", x = "flipper length", y = "body mass")
+
+```
+
+```{r}
+ggplot(data = penguins) + 
+  geom_smooth(mapping = aes(x = flipper_length_mm, y = body_mass_g, linetype = species)) + 
+  labs(title ="penguins", x = "flipper length", y = "body mass")
+
+```
+
+```{r}
+# jitter to make noise
+ggplot(data = penguins) + 
+  geom_jitter(mapping = aes(x = flipper_length_mm, y = body_mass_g)) + 
+  labs(title ="penguins", x = "flipper length", y = "body mass")
+
+```
+
+
+```{r}
+# bar chart
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = cut)) 
+
+```
+
+
 
 
 
