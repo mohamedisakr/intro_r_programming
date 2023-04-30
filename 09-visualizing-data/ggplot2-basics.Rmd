@@ -70,6 +70,13 @@ ggplot(data = bookings) + geom_point(mapping = aes(x = stays_in_weekend_nights, 
 ```
 
 
+```{r}
+ggplot(data = penguins) + 
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, shape = species, color = species, size = species)) + 
+  labs(title ="penguins", x = "flipper length", y = "body mass")
+
+```
+
 
 
 
