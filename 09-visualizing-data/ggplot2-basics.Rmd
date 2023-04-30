@@ -137,6 +137,48 @@ ggplot(data = penguins) +
 ```
 
 
+```{r}
+
+ggplot(data = bookings) +
+  geom_bar(mapping = aes(x = distribution_channel))
+
+```
 
 
 
+```{r}
+# load hotel bookings
+bookings <- read_csv(here("data", "hotels.csv"))
+bookings
+```
+
+```{r}
+# create a bar chart showing each hotel type and market segment. 
+# use different colors to represent each market segment
+ggplot(data = bookings) +
+  geom_bar(mapping = aes(x = hotel, fill = market_segment))
+```
+
+
+```{r faceting a plot}
+# use the facet_wrap() function to create a separate plot for each market segment: 
+ggplot(data = bookings) +
+  geom_bar(mapping = aes(x = hotel)) +
+  facet_wrap(~market_segment)
+```
+
+
+```{r}
+# filtering a dataset to just city hotels that are online TA
+city_hotels <- bookings %>% filter(hotel=="City Hotel" & market_segment=="Online TA")
+city_hotels
+```
+
+
+
+```{r creating a plot part two}
+
+ggplot(data = city_hotels) +
+  geom_point(mapping = aes(x = lead_time, y = children))
+
+```
