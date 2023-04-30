@@ -39,12 +39,39 @@ ggplot(data = penguins) + geom_point(mapping = aes(x = flipper_length_mm, y = bo
 
 # or
 
-ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g)) + geom_point() 
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g)) + geom_point() + 
+  labs(title ="penguins", x = "flipper length", y = "body mass")
 
 ```
 
 ```{r}
-ggplot(data = penguins) + geom_point(mapping = aes(x = bill_length_mm, y = bill_depth_mm)) 
+ggplot(data = penguins) + geom_point(mapping = aes(x = bill_length_mm, y = bill_depth_mm)) + 
+  labs(title ="penguins", x = "bill length", y = "bill depth")
 
 ```
+
+```{r}
+# load hotel bookings
+bookings <- read_csv(here("data", "hotels.csv"))
+bookings
+```
+
+```{r}
+# You can use `ggplot2` to determine if people with children book hotel rooms in advance. Try running the code below
+ggplot(data = bookings) +
+  geom_point(mapping = aes(x = lead_time, y = children))
+```
+
+
+```{r}
+# Try mapping 'stays_in_weekend_nights' on the x-axis and 'children' on the y-axis by filling out the remainder of the code below
+ggplot(data = bookings) + geom_point(mapping = aes(x = stays_in_weekend_nights, y = children)) + 
+  labs(title ="bookings", x = "weekend nights stays", y = "children")
+```
+
+
+
+
+
+
 
