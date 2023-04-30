@@ -55,3 +55,35 @@ penguins
 penguins <- penguins %>%  arrange(bill_length_mm)
 penguins
 ```
+
+```{r}
+# What code chunk does the analyst add to create a data frame that only includes the Gentoo species? 
+penguins_gentoo <- penguins %>%  filter(species == 'Gentoo')
+penguins_gentoo
+```
+
+```{r}
+# Add the code chunk that lets you find the minimum value for the variable bill_depth_mm 
+penguins_min <-  penguins %>% drop_na() %>% group_by(species) %>% 
+  summarise(min_bill_len = min(bill_depth_mm))
+penguins_min
+```
+
+```{r}
+# install.packages("SimDesign")
+library(SimDesign)
+
+actual_temp <- c(68.3, 70, 72.4, 71, 67, 70) 
+predicted_temp <- c(67.9, 69, 71.5, 70, 67, 69) 
+bias(actual_temp, predicted_temp)
+
+```
+
+```{r}
+actual_sales <- c(150, 203, 137, 247, 116, 287) 
+predicted_sales <- c(200, 300, 150, 250, 150, 300) 
+bias(actual_sales, predicted_sales)
+
+```
+
+
