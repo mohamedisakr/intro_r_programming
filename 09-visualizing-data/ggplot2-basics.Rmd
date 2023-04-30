@@ -109,6 +109,32 @@ ggplot(data = diamonds) +
 
 ```
 
+```{r}
+# facet to display smaller groups, subset of data
+# facet_wrap to facet plot by 1 single variable
+# facet_grid to facet plot by 2 variables
+ggplot(data = penguins) + 
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, color = species)) +
+  facet_wrap(~species)
+
+```
+
+
+```{r}
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = color, fill = cut))  +
+  facet_wrap(~cut)
+
+```
+
+
+```{r}
+
+ggplot(data = penguins) + 
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, color = species)) +
+  facet_grid(sex~species)
+
+```
 
 
 
