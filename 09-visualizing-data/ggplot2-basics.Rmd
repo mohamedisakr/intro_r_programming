@@ -27,6 +27,12 @@ data("penguins")
 View(penguins)
 ```
 
+```{r}
+# plot template
+# ggplot(data=<DATA>)+ <GEOM_FUNCTION>(mapping=aes(<AESTHETIC MAPPINGS>)) 
+```
+
+
 
 ```{r}
 ggplot(data = penguins) + geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g)) 
@@ -34,6 +40,11 @@ ggplot(data = penguins) + geom_point(mapping = aes(x = flipper_length_mm, y = bo
 # or
 
 ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g)) + geom_point() 
+
+```
+
+```{r}
+ggplot(data = penguins) + geom_point(mapping = aes(x = bill_length_mm, y = bill_depth_mm)) 
 
 ```
 
