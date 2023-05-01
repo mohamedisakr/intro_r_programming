@@ -55,7 +55,53 @@ best_trimmed_flavors_df <- chocolate_df %>% filter(CocoaPercent >= 0.75, Rating 
 best_trimmed_flavors_df
 ```
 
-## TODO: Question 8
+## use the geom_bar() function to create a bar chart. 
+### Add the code chunk that lets you create a bar chart with the variable Company on the x-axis.
+```{r}
+
+ggplot(data = best_trimmed_flavors_df) + geom_bar(mapping = aes(x = Company))
+
+```
+
+
+## Add a code chunk to the second line of code to map the aesthetic fill to the variable Rating
+
+```{r}
+
+ggplot(data = best_trimmed_flavors_df) + geom_bar(mapping = aes(x = CompanyLocation, fill = Rating)) 
+
+```
+
+## create wrap around facets of the variable Cocoa.Percent
+
+```{r}
+
+ggplot(data = best_trimmed_flavors_df) + 
+  geom_bar(mapping = aes(x = CocoaPercent)) + 
+   facet_wrap(~CocoaPercent) 
+  
+```
+
+
+## add the title Best Chocolates to your plot
+
+```{r}
+
+ ggplot(data = trimmed_flavors_df) + 
+  geom_point(mapping = aes(x = CocoaPercent, y = Rating)) + 
+  labs(title = 'Best Chocolates') 
+  
+```
+
+## save your plot as a png file with chocolate as the file name
+
+```{r}
+
+ggplot(data = trimmed_flavors_df) + geom_point(mapping = aes(x = CocoaPercent, y = Rating)) 
+ggsave('chocolate.png')
+
+```  
+
 
 
 
