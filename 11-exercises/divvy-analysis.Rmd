@@ -30,8 +30,20 @@ library(here)       # ()
 
 ```{r}
 # Upload Divvy datasets (csv files) here
-divvy_cycles <- read_csv(here("data", "divvy-tripdata-2023-03.csv"))
-divvy_cycles
+jan_23 <- read_csv(here("data", "divvy-tripdata-2023-01.csv"))
+colnames(jan_23)
+feb_23 <- read_csv(here("data", "divvy-tripdata-2023-02.csv"))
+colnames(feb_23)
+mar_23 <- read_csv(here("data", "divvy-tripdata-2023-03.csv"))
+colnames(mar_23)
+
+
+# combine 3 datasets
+first_quart_23 <- bind_rows(jan_23, feb_23, mar_23)
+first_quart_23
+
+# save the combined dataset
+
 ```
 
 ```{r}
@@ -61,11 +73,54 @@ percent_type_group
 
 percent_bar_chart <- ggplot(data = percent_type_group, aes(x = member_casual, y = percent, fill = percent)) + 
   geom_bar(stat="identity", width=0.4, fill="steelblue") +
-  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9")) +
-  geom_text(aes(label = round(percent, 2)), vjust=1.6, color="white", size=3.5)+
+  geom_text(aes(label = round(percent, 2)), vjust=1.6, color="white", size=7.5)+
   theme_minimal()
 
 percent_bar_chart
+
+```
+```{r}
+# pie chart for percent of clients for each member types
+
+percent_bar_chart <- ggplot(data = percent_type_group, aes(x = "", y = percent, fill = member_casual)) +
+  geom_col(color = "black") +
+  geom_label(aes(label = percent), color = c(1, "white"),
+            position = position_stack(vjust = 0.5),
+            show.legend = FALSE) +
+  guides(fill = guide_legend(title = "Client types percent")) +
+  scale_fill_viridis_d() +
+  coord_polar(theta = "y") + 
+  theme_void()
+
+percent_bar_chart
+
+```
+
+
+```{r}
+# percent of clients for each rideable type
+percent_rideable_type_group <- divvy_cycles %>% 
+  group_by(rideable_type) %>% 
+  summarise(count = n()) %>%
+  mutate(percent = (round(count / sum(count), 2) * 100)) %>% 
+  arrange(desc(percent))
+percent_rideable_type_group
+```
+
+```{r}
+# pie chart for percent each rideable type
+
+percent_rideable_pie_chart <- ggplot(data = percent_rideable_type_group, aes(x = "", y = percent, fill = rideable_type)) +
+  geom_col(color = "black") +
+  geom_label(aes(label = percent), color = c(1, "white", "white"),
+            position = position_stack(vjust = 0.5),
+            show.legend = FALSE) +
+  guides(fill = guide_legend(title = "rideable types percent")) +
+  scale_fill_viridis_d() +
+  coord_polar(theta = "y") + 
+  theme_void()
+
+percent_rideable_pie_chart
 
 ```
 
@@ -82,18 +137,30 @@ head(divvy_cycles)  #See the first 6 rows of data frame.  Also tail(all_trips)
 str(divvy_cycles)  #See list of columns and data types (numeric, character, etc)
 summary(divvy_cycles)  #Statistical summary of data. Mainly for numerics
 ```
+
+
 <!-- TODO -->
 # There are a few problems we will need to fix:
-# (1) In the "member_casual" column, there are two names for members ("member" and "Subscriber") and two names for casual riders ("Customer" and "casual"). We will need to consolidate that from four to two labels.
-# (2) The data can only be aggregated at the ride-level, which is too granular. We will want to add some additional columns of data -- such as day, month, year -- that provide additional opportunities to aggregate the data.
+# (1) In the "member_casual" column, there are two names for members ("member" and "Subscriber") 
+and two names for casual riders ("Customer" and "casual"). We will need to consolidate that from 
+four to two labels.
+
+# (2) The data can only be aggregated at the ride-level, which is too granular. We will want to add 
+some additional columns of data -- such as day, month, year -- that provide additional opportunities 
+to aggregate the data.
+
 # (3) We will want to add a calculated field for length of ride since the 2020Q1 data did not have the "tripduration" column. We will add "ride_length" to the entire dataframe for consistency.
+
 # (4) There are some rides where tripduration shows up as negative, including several hundred rides where Divvy took bikes out of circulation for Quality Control reasons. We will want to delete these rides.
 
 
 # In the "member_casual" column, replace "Subscriber" with "member" and "Customer" with "casual"
+
 # Before 2020, Divvy used different labels for these two types of riders ... we will want to make our dataframe consistent with their current nomenclature
+
 # N.B.: "Level" is a special property of a column that is retained even if a subset does not contain any values from a specific level
-# Begin by seeing how many observations fall under each usertype
+
+# Begin by seeing how many observations fall under each user type
 table(all_trips$member_casual)
 
 
