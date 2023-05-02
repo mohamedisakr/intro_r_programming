@@ -43,7 +43,7 @@ first_quart_23 <- bind_rows(jan_23, feb_23, mar_23)
 first_quart_23
 
 # save the combined dataset
-
+write_csv(first_quart_23, here("data", "divvy-tripdata-2023-Q1.csv"))
 ```
 
 ```{r}
