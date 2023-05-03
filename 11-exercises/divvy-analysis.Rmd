@@ -223,7 +223,7 @@ aggregate(first_quart_23_v2$ride_length ~ first_quart_23_v2$member_casual, FUN =
 aggregate(first_quart_23_v2$ride_length ~ first_quart_23_v2$member_casual, FUN = max)
 aggregate(first_quart_23_v2$ride_length ~ first_quart_23_v2$member_casual, FUN = min)
 
-?aggregate
+# ?aggregate
 # TODO
 # See the average ride time by each day for members vs casual users
 average_ride_time_by_day_client_type <- aggregate(first_quart_23_v2$ride_length ~ first_quart_23_v2$member_casual + first_quart_23_v2$day_of_week, FUN = mean)
