@@ -331,6 +331,42 @@ first_quart_23_v2 %>%
 counts <- aggregate(ride_length ~ member_casual + day_of_week, first_quart_23_v2, FUN = mean)
 # write_csv(first_quart_23, here("data", "divvy-tripdata-2023-Q1-raw.csv"))
 write.csv(counts, file = here("data", "avg_ride_length.csv"))
-# '~/Desktop/Divvy_Exercise/avg_ride_length.csv'
+
 ```
+
+#=================================================
+# Insights & Metrics  
+#=================================================
+
+## Ride (trips)
+
+* Longest ride length
+
+* shortest ride length
+
+* No. of rides per month compared to all months
+
+* No. of rides per month (by client type) compared to all months
+
+* No. of rides per season compared to all seasons of the year
+
+* No. rides per bike per day
+
+
+## Stations
+
+* Identify bottlenecks in start stations (hotspots) (demand density).
+
+* Rides Start -> What are the most common types of pick up stations
+
+* Which of stations are repeatable? Where do clients start the trip from?
+
+* Trips End -> Where do the largest distance trip end? Where do long-duration trips end?
+
+* Origin-Destination Pairs -> What are the top O-D pairs?
+
+* Identify rush hours (time intervals)
+
+
+
 
