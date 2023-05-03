@@ -53,6 +53,14 @@ client_types
 ```
 
 ```{r}
+# list station names
+station_name_list <- first_quart_23 %>% distinct(end_station_name)
+station_name_list
+
+station_list_count <- nrow(station_name_list)
+station_list_count
+```
+```{r}
 # number of clients for each member types
 client_type_category <- first_quart_23 %>% group_by(member_casual) %>% summarise(count = n()) 
 client_type_category
@@ -323,6 +331,6 @@ first_quart_23_v2 %>%
 counts <- aggregate(ride_length ~ member_casual + day_of_week, first_quart_23_v2, FUN = mean)
 # write_csv(first_quart_23, here("data", "divvy-tripdata-2023-Q1-raw.csv"))
 write.csv(counts, file = here("data", "avg_ride_length.csv"))
-'~/Desktop/Divvy_Exercise/avg_ride_length.csv'
+# '~/Desktop/Divvy_Exercise/avg_ride_length.csv'
 ```
 
