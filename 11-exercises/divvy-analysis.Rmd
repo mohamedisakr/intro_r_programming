@@ -43,7 +43,7 @@ first_quart_23 <- bind_rows(jan_23, feb_23, mar_23)
 first_quart_23
 
 # save the combined dataset
-write_csv(first_quart_23, here("data", "divvy-tripdata-2023-Q1.csv"))
+write_csv(first_quart_23, here("data", "divvy-tripdata-2023-Q1-raw.csv"))
 ```
 
 ```{r}
@@ -163,6 +163,9 @@ to aggregate the data.
 ``` {r}
 # Begin by seeing how many observations fall under each user type
 table(first_quart_23$member_casual)
+client_type_no = as.data.frame(table(first_quart_23$member_casual))
+str(client_type_no)
+dim(client_type_no)
 
 
 # Add columns that list the date, month, day, and year of each ride
@@ -180,13 +183,15 @@ first_quart_23$day_of_week <- format(as.Date(first_quart_23$date), "%A")
 first_quart_23$ride_length <- difftime(first_quart_23$ended_at,first_quart_23$started_at)
 
 # Inspect the structure of the columns
-colnames(first_quart_23)  #List of column names
-nrow(first_quart_23)  #How many rows are in data frame?
-dim(first_quart_23)  #Dimensions of the data frame?
-head(first_quart_23)  #See the first 6 rows of data frame.  
-tail(first_quart_23)  #See the last 6 rows of data frame.
-str(first_quart_23)  #See list of columns and data types (numeric, character, etc)
-summary(first_quart_23)  #Statistical summary of data. Mainly for numerics
+colnames(first_quart_23)  # List of column names
+nrow(first_quart_23)  # How many rows are in data frame?
+ncol(first_quart_23)  # #How many columns are in data frame?
+dim(first_quart_23)  # Dimensions of the data frame?
+head(first_quart_23)  # See the first 6 rows of data frame.  
+tail(first_quart_23)  # See the last 6 rows of data frame.
+str(first_quart_23)  # See list of columns and data types (numeric, character, etc)
+summary(first_quart_23)  # Statistical summary of data.
+summary(first_quart_23 %>% select(where(is.numeric)))  # Statistical summary of data for numerics only
 
 # Convert "ride_length" from Factor to numeric so we can run calculations on the data
 is.factor(first_quart_23$ride_length)
