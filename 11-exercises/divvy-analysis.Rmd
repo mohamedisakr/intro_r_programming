@@ -216,7 +216,7 @@ min(first_quart_23_v2$ride_length) #shortest ride
 # You can condense the four lines above to one line using summary() on the specific attribute
 summary(first_quart_23_v2$ride_length)
 
-
+# continuous variable first, then categorical variable
 # Compare members and casual users
 aggregate(first_quart_23_v2$ride_length ~ first_quart_23_v2$member_casual, FUN = mean)
 aggregate(first_quart_23_v2$ride_length ~ first_quart_23_v2$member_casual, FUN = median)
