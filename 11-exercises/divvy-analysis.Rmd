@@ -179,10 +179,14 @@ first_quart_23$day_of_week <- format(as.Date(first_quart_23$date), "%A")
 # https://stat.ethz.ch/R-manual/R-devel/library/base/html/difftime.html
 first_quart_23$ride_length <- difftime(first_quart_23$ended_at,first_quart_23$started_at)
 
-
 # Inspect the structure of the columns
-str(first_quart_23)
-
+colnames(first_quart_23)  #List of column names
+nrow(first_quart_23)  #How many rows are in data frame?
+dim(first_quart_23)  #Dimensions of the data frame?
+head(first_quart_23)  #See the first 6 rows of data frame.  
+tail(first_quart_23)  #See the last 6 rows of data frame.
+str(first_quart_23)  #See list of columns and data types (numeric, character, etc)
+summary(first_quart_23)  #Statistical summary of data. Mainly for numerics
 
 # Convert "ride_length" from Factor to numeric so we can run calculations on the data
 is.factor(first_quart_23$ride_length)
@@ -195,7 +199,7 @@ is.numeric(first_quart_23$ride_length)
 # https://www.datasciencemadesimple.com/delete-or-drop-rows-in-r-with-conditions-2/
 first_quart_23_v2 <- first_quart_23[!(first_quart_23$start_station_name == "HQ QR" | first_quart_23$ride_length<0),]
 
-first_quart_23_v2
+nrow(first_quart_23_v2)
 ```
 
 
@@ -205,16 +209,35 @@ first_quart_23_v2
 # STEP 4: CONDUCT DESCRIPTIVE ANALYSIS
 #=====================================
 
+
+``` {r}
+# Add a "trip_length" calculation to first_quart_23_v2 (in minutes)
+
+first_quart_23_v2$trip_length <- as.double(difftime(first_quart_23_v2$ended_at,
+                   first_quart_23_v2$started_at, units="mins")) #
+
+head(first_quart_23_v2)
+```
+
 ``` {r}
 # Descriptive analysis on ride_length (all figures in seconds)
-mean(first_quart_23_v2$ride_length) #straight average (total ride length / rides)
-median(first_quart_23_v2$ride_length) #midpoint number in the ascending array of ride lengths
-max(first_quart_23_v2$ride_length) #longest ride
-min(first_quart_23_v2$ride_length) #shortest ride
+mean(first_quart_23_v2$ride_length, na.rm = TRUE) # straight average (total ride length / rides)
+median(first_quart_23_v2$ride_length, na.rm = TRUE) # midpoint number in the ascending array of ride lengths
+max(first_quart_23_v2$ride_length, na.rm = TRUE) # longest ride
+min(first_quart_23_v2$ride_length, na.rm = TRUE) # shortest ride
+
 
 
 # You can condense the four lines above to one line using summary() on the specific attribute
 summary(first_quart_23_v2$ride_length)
+sd(first_quart_23_v2$ride_length, na.rm = TRUE)  # dispersion relative to mean 
+
+is.na(first_quart_23_v2$ride_length)
+
+na_count_ride_length <- first_quart_23_v2 %>% summarise_all(~sum(is.na(ride_length)))
+
+na_count_ride_length$ride_length # number of empty ride_length
+
 
 # continuous variable first, then categorical variable
 # Compare members and casual users
