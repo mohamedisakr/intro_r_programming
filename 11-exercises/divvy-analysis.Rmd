@@ -47,42 +47,42 @@ write_csv(first_quart_23, here("data", "divvy-tripdata-2023-Q1.csv"))
 ```
 
 ```{r}
-# list member types
-member_types <- first_quart_23 %>% distinct(member_casual)
-member_types
+# list client types
+client_types <- first_quart_23 %>% distinct(member_casual)
+client_types
 ```
 
 ```{r}
 # number of clients for each member types
-member_type_group <- first_quart_23 %>% group_by(member_casual) %>% summarise(count = n()) 
-member_type_group
+client_type_category <- first_quart_23 %>% group_by(member_casual) %>% summarise(count = n()) 
+client_type_category
 ```
 
 ```{r}
 # percent of clients for each member types
-percent_type_group <- first_quart_23 %>% 
+client_type_category_percent <- first_quart_23 %>% 
   group_by(member_casual) %>% 
   summarise(count = n()) %>%
   mutate(percent = (round(count / sum(count), 2) * 100)) %>% 
   arrange(desc(percent))
-percent_type_group
+client_type_category_percent
 ```
 
 ```{r}
 # bar chart for percent of clients for each member types
 
-percent_bar_chart <- ggplot(data = percent_type_group, aes(x = member_casual, y = percent, fill = percent)) + 
+client_type_category_percent_bar_chart <- ggplot(data = client_type_category_percent, aes(x = member_casual, y = percent, fill = percent)) + 
   geom_bar(stat="identity", width=0.4, fill="steelblue") +
   geom_text(aes(label = round(percent, 2)), vjust=1.6, color="white", size=7.5)+
   theme_minimal()
 
-percent_bar_chart
+client_type_category_percent_bar_chart
 
 ```
 ```{r}
 # pie chart for percent of clients for each member types
 
-percent_bar_chart <- ggplot(data = percent_type_group, aes(x = "", y = percent, fill = member_casual)) +
+client_type_category_percent__bar_chart <- ggplot(data = client_type_category_percent, aes(x = "", y = percent, fill = member_casual)) +
   geom_col(color = "black") +
   geom_label(aes(label = percent), color = c(1, "white"),
             position = position_stack(vjust = 0.5),
@@ -92,25 +92,25 @@ percent_bar_chart <- ggplot(data = percent_type_group, aes(x = "", y = percent, 
   coord_polar(theta = "y") + 
   theme_void()
 
-percent_bar_chart
+client_type_category_percent__bar_chart
 
 ```
 
 
 ```{r}
 # percent of clients for each rideable type
-percent_rideable_type_group <- first_quart_23 %>% 
+rideable_type_group_percent <- first_quart_23 %>% 
   group_by(rideable_type) %>% 
   summarise(count = n()) %>%
   mutate(percent = (round(count / sum(count), 2) * 100)) %>% 
   arrange(desc(percent))
-percent_rideable_type_group
+rideable_type_group_percent
 ```
 
 ```{r}
 # pie chart for percent each rideable type
 
-percent_rideable_pie_chart <- ggplot(data = percent_rideable_type_group, aes(x = "", y = percent, fill = rideable_type)) +
+rideable_type_group_pie_chart <- ggplot(data = rideable_type_group_percent, aes(x = "", y = percent, fill = rideable_type)) +
   geom_col(color = "black") +
   geom_label(aes(label = percent), color = c(1, "white", "white"),
             position = position_stack(vjust = 0.5),
@@ -120,7 +120,7 @@ percent_rideable_pie_chart <- ggplot(data = percent_rideable_type_group, aes(x =
   coord_polar(theta = "y") + 
   theme_void()
 
-percent_rideable_pie_chart
+rideable_type_group_pie_chart
 
 ```
 
