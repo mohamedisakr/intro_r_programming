@@ -44,7 +44,7 @@ colnames(mar_23)
 
 
 # combine 3 datasets
-first_quart_23 <- bind_rows(jan_23, feb_23, mar_23)
+first_quart_23 <- as_tibble(bind_rows(jan_23, feb_23, mar_23))
 first_quart_23
 
 # save the combined dataset
@@ -120,7 +120,7 @@ client_type_category_percent_bar_chart
 ```{r}
 # pie chart for percent of clients for each member types
 
-client_type_category_percent__bar_chart <- ggplot(data = client_type_category_percent, aes(x = "", y = percent, fill = member_casual)) +
+client_type_category_percent_bar_chart <- ggplot(data = client_type_category_percent, aes(x = "", y = percent, fill = member_casual)) +
   geom_col(color = "black") +
   geom_label(aes(label = percent), color = c(1, "white"),
             position = position_stack(vjust = 0.5),
@@ -130,7 +130,7 @@ client_type_category_percent__bar_chart <- ggplot(data = client_type_category_pe
   coord_polar(theta = "y") + 
   theme_void()
 
-client_type_category_percent__bar_chart
+client_type_category_percent_bar_chart
 
 ```
 
@@ -250,11 +250,11 @@ is.numeric(first_quart_23$ride_length)
 # The dataframe includes a few hundred entries when bikes were taken out of docks and checked for quality by Divvy or ride_length was negative
 # We will create a new version of the dataframe (v2) since data is being removed
 # https://www.datasciencemadesimple.com/delete-or-drop-rows-in-r-with-conditions-2/
-first_quart_23_v2 <- first_quart_23[!(first_quart_23$start_station_name == "HQ QR" | first_quart_23$ride_length<0),]
+first_quart_23_v2 <- first_quart_23[!(first_quart_23$start_station_name == "HQ QR" | first_quart_23$ride_length < 0),]
 
 nrow(first_quart_23_v2)
 
-is.na(first_quart_23$ride_length)
+# is.na(first_quart_23$ride_length)
 ```
 
 
@@ -266,13 +266,21 @@ is.na(first_quart_23$ride_length)
 
 
 ``` {r}
-# Add a "trip_length" calculation to first_quart_23_v2 (in minutes)
+# Add a "trip_duration" calculation to first_quart_23_v2 (in minutes)
 
-first_quart_23_v2$trip_length <- as.double(difftime(first_quart_23_v2$ended_at,
+first_quart_23_v2$trip_duration <- as.double(difftime(first_quart_23_v2$ended_at,
                    first_quart_23_v2$started_at, units="mins")) #
 
 head(first_quart_23_v2)
 ```
+
+```{r}
+# sort by trip_duration desc
+# max(first_quart_23_v2$trip_duration, na.rm = TRUE)
+sort_by_trip_duration_desc <- first_quart_23_v2 %>% arrange(desc(trip_duration))
+sort_by_trip_duration_desc
+```
+
 
 ``` {r}
 # Descriptive analysis on ride_length (all figures in seconds)
@@ -280,77 +288,112 @@ mean(first_quart_23_v2$ride_length, na.rm = TRUE) # straight average (total ride
 median(first_quart_23_v2$ride_length, na.rm = TRUE) # midpoint number in the ascending array of ride lengths
 max(first_quart_23_v2$ride_length, na.rm = TRUE) # longest ride
 min(first_quart_23_v2$ride_length, na.rm = TRUE) # shortest ride
+```
 
-
+```{r}
 
 # You can condense the four lines above to one line using summary() on the specific attribute
 summary(first_quart_23_v2$ride_length)
 sd(first_quart_23_v2$ride_length, na.rm = TRUE)  # dispersion relative to mean 
 
-is.na(first_quart_23_v2$ride_length)
+# is.na(first_quart_23_v2$ride_length)
+```
 
-na_count_ride_length <- first_quart_23_v2 %>% summarise_all(~sum(is.na(ride_length)))
-na_count_ride_length$ride_length # number of empty ride_length
-str(na_count_ride_length)
+```{r}
 
+na_count <- first_quart_23_v2 %>% summarise_all(~sum(is.na(ride_length)))
+na_count$ride_length # number of empty ride_length
+str(na_count)
+
+```
+
+```{r}
 
 # continuous variable first, then categorical variable
-# Compare members and casual users
-# first_quart_23_v2$trip_length
-aggregate(first_quart_23_v2$ride_length ~ first_quart_23_v2$member_casual, FUN = mean)
-aggregate(first_quart_23_v2$ride_length ~ first_quart_23_v2$member_casual, FUN = median)
-aggregate(first_quart_23_v2$ride_length ~ first_quart_23_v2$member_casual, FUN = max)
-aggregate(first_quart_23_v2$ride_length ~ first_quart_23_v2$member_casual, FUN = min)
+# Compare members and casual clients
+# first_quart_23_v2$trip_duration
+
+aggregate(ride_length ~ member_casual, first_quart_23_v2, FUN = mean)
+
+aggregate(ride_length ~ member_casual, first_quart_23_v2, FUN = median)
+
+aggregate(ride_length ~ member_casual, first_quart_23_v2, FUN = max)
+
+aggregate(ride_length ~ member_casual, first_quart_23_v2, FUN = min)
+
+```
 
 
+
+```{r}
 
 # Notice that the days of the week are out of order. Let's fix that.
 first_quart_23_v2$day_of_week <- ordered(first_quart_23_v2$day_of_week, levels=c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))
 
+```
 
-# Now, let's run the average ride time by each day for members vs casual users
+
+```{r}
+
+# Now, let's run the average ride time by each day for members vs casual clients
 # aggregate(ride_length ~ member_casual + day_of_week, first_quart_23_v2, FUN = mean)
 
-# See the average ride time by each day for members vs casual users
-average_ride_time_by_day_client_type <- as_tibble(aggregate(ride_length ~ member_casual + day_of_week, first_quart_23_v2, FUN = mean))
+# See the average ride time by each day for members vs casual clients
+average_ride_time_by_day_client_type <- as_tibble(
+  aggregate(ride_length ~ member_casual + day_of_week, first_quart_23_v2, FUN = mean)
+  )
+
+average_ride_time_by_day_client_type
+
 
 str(average_ride_time_by_day_client_type)
 head(average_ride_time_by_day_client_type)
 View(average_ride_time_by_day_client_type)
 
+```
+
+
+```{r}
+
 # analyze ridership data by client type and weekday
-first_quart_23_v2 %>% 
-  mutate(weekday = wday(started_at, label = TRUE)) %>%  #creates weekday field using wday()
-  group_by(member_casual, weekday) %>%  #groups by usertype and weekday
-  summarise(number_of_rides = n() #calculates the number of rides and average duration 
-  ,average_duration = mean(ride_length)) %>%                 # calculates the average duration
-  arrange(member_casual, weekday)                                                                # sorts
+ridership_by_weekday_client_type <- as_tibble(
+  first_quart_23_v2 %>% 
+  mutate(weekday = wday(started_at, label = TRUE)) %>%  # creates weekday field using wday()
+  group_by(member_casual, weekday) %>%  # groups by client type and weekday
+  summarise(number_of_rides = n() # calculates the number of rides and average duration 
+  , average_duration = mean(ride_length)) %>%                 # calculates the average duration
+  arrange(member_casual, weekday) 
+  )# <- as_tibble(ridership_by_weekday_client_type) # sorts
+
+
+ridership_by_weekday_client_type
+
+```
+
+
+```{r}
 
 
 # Let's visualize the number of rides by rider type
-first_quart_23_v2 %>%
-  mutate(weekday = wday(started_at, label = TRUE)) %>%
-  group_by(member_casual, weekday) %>%
-  summarise(number_of_rides = n(), average_duration = mean(ride_length)) %>%
-  arrange(member_casual, weekday)  %>%
-  ggplot(aes(x = weekday, y = number_of_rides, fill = member_casual)) +
-  geom_col(position = "dodge")
-
-# Let's visualize the number of rides by rider type
-# ggplot(data = first_quart_23_v2, aes(x = weekday, y = number_of_rides, fill = member_casual)) +
-#   geom_col(position = "dodge")
-
-
-# Let's create a visualization for average duration
-first_quart_23_v2 %>% 
-  mutate(weekday = wday(started_at, label = TRUE)) %>% 
-  group_by(member_casual, weekday) %>% 
-  summarise(number_of_rides = n(), average_duration = mean(ride_length)) %>% 
-  arrange(member_casual, weekday)  %>% 
-  ggplot(aes(x = weekday, y = average_duration, fill = member_casual)) +
+ggplot(data = ridership_by_weekday_client_type, 
+       aes(x = weekday, y = number_of_rides, fill = member_casual)) +
   geom_col(position = "dodge")
 
 ```
+
+
+```{r}
+
+# Let's create a visualization for average duration
+
+ ggplot(data = ridership_by_weekday_client_type, 
+        aes(x = weekday, y = average_duration, fill = member_casual)) +
+  geom_col(position = "dodge")
+
+```
+
+
+
 
 #=================================================
 # STEP 5: EXPORT SUMMARY FILE FOR FURTHER ANALYSIS
@@ -358,9 +401,8 @@ first_quart_23_v2 %>%
 ```{r}
 # Create a csv file that we will visualize in Excel, Tableau, or my presentation software
 # N.B.: This file location is for a Mac. If you are working on a PC, change the file location accordingly (most likely "C:\Users\YOUR_USERNAME\Desktop\...") to export the data. You can read more here: https://datatofish.com/export-dataframe-to-csv-in-r/
-counts <- aggregate(ride_length ~ member_casual + day_of_week, first_quart_23_v2, FUN = mean)
-# write_csv(first_quart_23, here("data", "divvy-tripdata-2023-Q1-raw.csv"))
-write.csv(counts, file = here("data", "avg_ride_length.csv"))
+
+write.csv(average_ride_time_by_day_client_type, file = here("data", "avg_ride_length.csv"))
 
 ```
 
