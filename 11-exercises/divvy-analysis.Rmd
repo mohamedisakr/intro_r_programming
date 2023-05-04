@@ -21,6 +21,11 @@ library(tidyverse)  # (wrangle data)
 library(lubridate)  # (wrangle date)
 library(ggplot2)    # (visualize data)
 library(here)       # ()
+
+# R.Version()
+# R.version
+# R.version.string
+# version
 ```
 
 
@@ -53,12 +58,37 @@ client_types
 ```
 
 ```{r}
-# list station names
-station_name_list <- first_quart_23 %>% distinct(end_station_name)
-station_name_list
+# list start station names
+start_station_name_list <- first_quart_23 %>% distinct(start_station_name)
+start_station_name_list
 
-station_list_count <- nrow(station_name_list)
-station_list_count
+start_station_name_list_count <- nrow(start_station_name_list)
+print(paste0("start station name list count: ", start_station_name_list_count))
+
+# list start station ids
+start_station_id_list <- first_quart_23 %>% distinct(start_station_id)
+start_station_id_list
+
+start_station_id_list_count <- nrow(start_station_id_list)
+print(paste0("start station id list count: ", start_station_id_list_count))
+
+# --------------------------------
+
+# list end station names
+end_station_name_list <- first_quart_23 %>% distinct(end_station_name)
+end_station_name_list
+
+end_station_name_list_count <- nrow(end_station_name_list)
+print(paste0("end station name list count: ", end_station_name_list_count))
+
+# list end station ids
+end_station_id_list <- first_quart_23 %>% distinct(end_station_id)
+end_station_id_list
+
+end_station_id_list_count <- nrow(end_station_id_list)
+print(paste0("end station id list count: ", end_station_id_list_count))
+
+
 ```
 ```{r}
 # number of clients for each member types
@@ -188,7 +218,7 @@ first_quart_23$day_of_week <- format(as.Date(first_quart_23$date), "%A")
 
 # Add a "ride_length" calculation to first_quart_23 (in seconds)
 # https://stat.ethz.ch/R-manual/R-devel/library/base/html/difftime.html
-first_quart_23$ride_length <- difftime(first_quart_23$ended_at,first_quart_23$started_at)
+first_quart_23$ride_length <- difftime(first_quart_23$ended_at, first_quart_23$started_at)
 
 # Inspect the structure of the columns
 colnames(first_quart_23)  # List of column names
@@ -341,6 +371,9 @@ write.csv(counts, file = here("data", "avg_ride_length.csv"))
 ## Ride (trips)
 
 * Longest ride length
+```{r}
+
+```
 
 * shortest ride length
 
